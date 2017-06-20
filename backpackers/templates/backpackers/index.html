@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% load static %}
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">BagPackers</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="/flight">Flight</a></li>
+                            <li><a href="/hotel">Hotel</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Adventure just got easier</h1>
+                <p class="lead">Focus on your trip, we organize your stays.</p>
+            </div>
+
+            <form action="{% url 'search' %}" method="get">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="origin">Departure</label>
+                        <input type="text" name="origin" id="origin" class="form-control" placeholder="Choose your departure">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="destination">Destination</label>
+                        <input type="text" name="destination" id="destination" class="form-control" placeholder="Choose your destination">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="date">Departure date</label>
+                        <input type="text" name="date" id="date" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group col-md-offset-1 col-md-4">
+                        <label class="control-label" for="mode">Mode of travel</label>
+                        <select class="form-control" name="mode" id="mode">
+                            <option value="driving">Driving</option>
+                            <option value="walking">Walking / Cycling</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="criteria">Criteria</label>
+                        <div class="form-inline">
+                            <input type="text" name="interval" id="interval" class="form-control" placeholder="Stop every...">
+                            <select class="form-control" name="criteria" id="criteria">
+                                <option value="distance">Km</option>
+                                <option value="time">Hours</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" id="search" class="btn btn-lg btn-success">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Hacked with ♥ at <a href="http://www.oxfordhack.com">Oxford Hackathon</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  $("#date").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date(),
+        minDate: new Date()});
+});
+</script>
+{% endblock %}

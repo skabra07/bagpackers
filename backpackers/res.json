@@ -1,0 +1,79 @@
+[
+    {
+        "address": "48-50 Inverness Terrace; W2 3JA London",
+        "prices": [
+            {
+                "cost_per_night": "GBP 27",
+                "cost_total": "GBP 53",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_xp.png",
+                "agent_name": "Expedia",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_xp%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d1%26deeplink_ids%3deu-west-1.prod_f64f1d8917d5eef2fe1c1d48a599c87a%26q_datetime_utc%3d2017-06-19T12%253A29%253A00%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d1%26ticket_price%3d53%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            },
+            {
+                "cost_per_night": "GBP 27",
+                "cost_total": "GBP 53",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_hc.png",
+                "agent_name": "Hotels.com",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_hc%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d1%26deeplink_ids%3deu-west-1.prod_db19971b5d2d826567a8a1673696e314%26q_datetime_utc%3d2017-06-19T12%253A29%253A00%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d17%26ticket_price%3d53%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            },
+            {
+                "cost_per_night": "GBP 27",
+                "cost_total": "GBP 53",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_eb.png",
+                "agent_name": "ebookers",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_eb%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d1%26deeplink_ids%3deu-west-1.prod_59e838f7406ee6bfe3bcacc7b9c2fdc1%26q_datetime_utc%3d2017-06-19T12%253A29%253A00%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d88%26ticket_price%3d53%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            },
+            {
+                "cost_per_night": "GBP 29",
+                "cost_total": "GBP 57",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_zh.png",
+                "agent_name": "ZenHotels",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_zh%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d1%26deeplink_ids%3deu-west-1.prod_443a9661295a757953552a451d29b86a%26q_datetime_utc%3d2017-06-19T12%253A29%253A01%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d927794%26ticket_price%3d57%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            },
+            {
+                "cost_per_night": "GBP 30",
+                "cost_total": "GBP 59",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_lo.png",
+                "agent_name": "Lol Travel",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_lo%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d0%26deeplink_ids%3deu-west-1.prod_a1a5e802a05ea3b0ae3919072f128451%26q_datetime_utc%3d2017-06-19T12%253A29%253A00%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d1751084143%26ticket_price%3d59%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            },
+            {
+                "cost_per_night": "GBP 42",
+                "cost_total": "GBP 83",
+                "agent_url": "http://s1.apideeplink.com/images/websites/220x80/h_dm.png",
+                "agent_name": "Roomdi.com",
+                "booking_url": "http://partners.api.skyscanner.net/apiservices/deeplink/v2?_cje=kidsr4E5tF32DS4twQhBfv6ltAR4K2ovCZAHHPxySEQKbTN3EYKcRMpoD3af4yUY&url=www.skyscanner.net%2fhotel_deeplink%2f4.0%2fUK%2fen-GB%2fGBP%2fh_dm%2f47178470%2f2017-06-20%2f2017-06-22%2fhotel%2fhotel%2fhotels%3frooms_left%3d0%26deeplink_ids%3deu-west-1.prod_36042ee9a1df9272cc60c05e89959176%26q_datetime_utc%3d2017-06-19T12%253A29%253A00%26guests%3d2%26request_id%3d550a4b94-b798-47a3-9bba-08ddf8e48b0b%26legacy_provider_id%3d926985%26ticket_price%3d83%26rooms%3d1%26max_price%3d83.0&serviceType=HotelsDeeplink"
+            }
+        ],
+        "amenities": [
+            "Balcony",
+            "Television",
+            "Non-smoking",
+            "Laundry",
+            "Wi-Fi",
+            "Front desk 24 hour",
+            "Reception area",
+            "Luggage storage",
+            "Safe deposit box",
+            "Multilingual staff"
+        ],
+        "popularity": "Satisfactory",
+        "longitude": -0.186258,
+        "type": "Hostel",
+        "id": 0,
+        "images": [
+            "d3ba47lalua02r.cloudfront.net/available/161383223/morig.jpg",
+            "d3ba47lalua02r.cloudfront.net/available/29361514/morig.jpg",
+            "d3ba47lalua02r.cloudfront.net/available/82192244/morig.jpg",
+            "d3ba47lalua02r.cloudfront.net/available/171385403/morig.jpg",
+            "d3ba47lalua02r.cloudfront.net/available/189414620/morig.jpg",
+            "d3ba47lalua02r.cloudfront.net/available/82192258/morig.jpg"
+        ],
+        "description": "Just a 3-minute walk from Hyde Park, this fantastically central budget hostel with free Wi-Fi offers simple dorm accommodation plus kitchen facilities right in the heart of London.\nThe Smart Hyde Park Inn Hostel offers 36 dorms equipped with a key-card entry system, which are all furnished with bunks for between 4 and 20 people and have shared bathrooms.\n\nGuests can also make use of a communal kitchen, and other facilities include a TV lounge, laundry facilities and luggage storage.\n\nFree Wi-Fi is available throughout the building and the friendly staff at the 24-hour reception can provide tips on what to see and do.\nThe hostel is ideally located for making the most of your London stay: Portobello Road Market and Notting Hill are only 10 minutes away on public transport, and the city's top sights, such as Big Ben and the London Eye, are just a few stops on the handy underground.\nTube: Bayswater (Circle and District lines) and Queensway (Central line), both 320 metres.\nBus: 160 metres.\nTrain: London Paddington, 1.3 kilometres.",
+        "lowestPrice": 53,
+        "star_rating": 0,
+        "latitude": 51.51233,
+        "name": "Smart Hyde Park Inn Hostel",
+        "popularity_score": 62
+    },
+]

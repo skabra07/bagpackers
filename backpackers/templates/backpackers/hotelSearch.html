@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+<style type="text/css">
+
+    body{
+      background-image: url({% static 'img/bg.jpeg' %});
+      background-repeat:repeat-y;
+      background-size: 100% auto;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    }
+
+    a,
+    a:focus,
+    a:hover {
+      color: #fff;
+    }
+
+    .btn-default,
+    .btn-default:hover,
+    .btn-default:focus {
+      color: #333;
+      text-shadow: none;
+      background-color: #fff;
+      border: 1px solid #fff;
+    }
+
+    .cover-container {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .inner {
+      padding: 30px;
+    }
+
+    .masthead-brand {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .masthead-nav > li {
+      display: inline-block;
+    }
+    .masthead-nav > li + li {
+      margin-left: 20px;
+    }
+    .masthead-nav > li > a {
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff; /* IE8 proofing */
+      color: rgba(255,255,255,.75);
+      border-bottom: 2px solid transparent;
+    }
+    .masthead-nav > li > a:hover,
+    .masthead-nav > li > a:focus {
+      background-color: transparent;
+      border-bottom-color: #a9a9a9;
+      border-bottom-color: rgba(255,255,255,.25);
+    }
+    .masthead-nav > .active > a,
+    .masthead-nav > .active > a:hover,
+    .masthead-nav > .active > a:focus {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    @media (min-width: 768px) {
+      .masthead-brand {
+        float: left;
+      }
+      .masthead-nav {
+        float: right;
+      }
+    }
+
+    /*
+     * Affix and center
+     */
+
+    @media (min-width: 768px) {
+      /* Pull out the header and footer */
+      .masthead {
+        position: fixed;
+        top: 0;
+      }
+      .mastfoot {
+        position: fixed;
+        bottom: 0;
+      }
+      /* Start the vertical centering */
+      .site-wrapper-inner {
+        vertical-align: middle;
+      }
+      /* Handle the widths */
+      .masthead,
+      .mastfoot,
+      .cover-container {
+        width: 100%; /* Must be percentage or pixels for horizontal alignment */
+      }
+    }
+
+    @media (min-width: 992px) {
+      .masthead,
+      .mastfoot,
+      .cover-container {
+        width: 900px;
+      }
+    }
+
+
+  .wrapper {
+    margin: 50px auto;
+    padding: 40px;
+    max-width: 75%;
+
+  }
+  .tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-color:#aaa;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: table;
+    margin: 0 0 40px 0;
+  }
+  .tg td{
+    font-family:Arial, sans-serif;
+    display: table-cell;
+    font-size:16px;
+    padding:6px 12px;
+    border-style:solid;
+    border-width:0px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#666666;
+    color:#333;
+    background-color:#fff;
+    border-top-width:10px;
+    border-bottom-width:10px;
+    max-width: 500px;
+    word-wrap:break-word;
+  }
+  .tg th{
+    font-family:Arial, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:0px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aaa;
+    color:#fff;
+    background-color:#f38630;
+    border-top-width:1px;
+    border-bottom-width:1px;
+    max-width: 500px;
+    word-wrap:break-word;
+  }
+  .tg .tg-1swl{
+    font-weight:bold;
+    background-color:#ea6153;
+    color:#000;
+    vertical-align:middle;
+  }
+  .tg .tg-yw4l{
+    vertical-align:top;
+    text-align: left;
+  }
+
+  meter {
+    width: 250px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border:1px solid black;
+  }
+  .mySlides {display:none;}
+</style>
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="cover-container" style="position:static;margin-bottom:-40px">
+        <div class="inner">
+            <h3 class="masthead-brand"><a href="/">BagPackers</a></h3>
+            <nav>
+                <ul class="nav masthead-nav">
+                    <li><a href="/">Home</a></li>
+                    <li ><a href="/flight">Flight</a></li>
+                    <li class="active"><a href="/hotel">Hotel</a></li>
+                </ul>
+            </nav>
+        </div>
+</div>
+<div class="wrapper">
+ <table class="tg">
+   <thead>
+     <tr>
+       <th class="tg-1swl" style="font-size:50px">Hotels</th>
+       <th class="tg-1swl" style="font-size:50px" >Cost</th>
+       <th class="tg-1swl" style="font-size:50px">Book</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hotel in hotels %}
+    <tr>
+      {% if hotel.star_rating == 0 %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/0.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% elif hotel.star_rating == 1 %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/1.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% elif hotel.star_rating == 2 %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/2.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% elif hotel.star_rating == 3 %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/3.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% elif hotel.star_rating == 4 %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/4.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% else %}
+        <td class="tg-yw4l"><img src="{{hotel.images.0}}" width=250px height=350px  style="margin: 5px 8px"><br><font size="6">{{hotel.name}}</font><br><br><font size="5">Address:{{hotel.address}}<br><br>Star Rating:<br><img src="{% static 'img/5.png' %}" align="left"><br><br>Popularity:{{hotel.popularity}} <meter min="0" low="35" optimum="100" high="75" max="100" value="{{hotel.popularity_score}}"></meter><br><br><a href="#" id="bb{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More details</a><br><br></font></td>
+      {% endif %}
+
+      <td class="tg-yw4l" style="vertical-align: middle;text-align:center;font-size:32px">{{hotel.prices.0.cost_total}} ({{hotel.prices.0.cost_per_night}}/per night)</td>
+      <td class="tg-yw4l" style="vertical-align: middle;text-align:center;font-size:28px"><a href="{{hotel.prices.0.booking_url}}" style="color: rgb(0,0,0)" rel="nofollow">Book</a><br>or<br><a href="#" id="ba{{hotel.id}}" onclick="return false;" style="color: rgb(0,0,0)">More options</a></td>
+    </tr>
+    <tr id="s1{{hotel.id}}" style="display:none" >
+      <th class="tg-1swl" style="background-color:#2980b9;text-align:right"></th>
+      <th class="tg-1swl" style="background-color:#2980b9;text-align:left"></th>
+      <th class="tg-1swl" style="background-color:#2980b9;text-align:left"></th>
+    </tr>
+    <tr id="s2{{hotel.id}}" style="display:none">
+     <td>
+       {% for price in hotel.prices %}
+         {% if forloop.last %}
+          <img src="{{price.agent_url}}" width="120px" height="60px" style="display: block;margin-left: auto;margin-right: auto;">
+         {% else %}
+          <img src="{{price.agent_url}}" width="120px" height="60px" style="display: block;margin-left: auto;margin-right: auto;"><br><br>
+         {% endif %}
+       {% endfor %}
+     </td>
+     <td style="vertical-align: middle;font-size:20px">
+       {% for price in hotel.prices %}
+         {% if forloop.last %}
+          {{price.cost_total}} ({{price.cost_per_night}}/per night)
+         {% else %}
+          {{price.cost_total}} ({{price.cost_per_night}}/per night)<br><br><br><br>
+         {% endif %}
+       {% endfor %}
+     </td>
+     <td style="vertical-align: middle;text-align:left;font-size:20px">
+       {% for price in hotel.prices %}
+         {% if forloop.last %}
+          <a href="{{price.booking_url}}" rel="nofollow" style="color: rgb(0,0,0)">Book</a>
+         {% else %}
+          <a href="{{price.booking_url}}" rel="nofollow" style="color: rgb(0,0,0)">Book</a><br><br><br><br>
+         {% endif %}
+       {% endfor %}
+     </td>
+    </tr>
+    <tr id="s3{{hotel.id}}" style="display:none">
+       <th class="tg-1swl" style="background-color:#2980b9;"></th>
+       <th class="tg-1swl" style="background-color:#2980b9"></th>
+       <th class="tg-1swl" style="background-color:#2980b9;"></th>
+    </tr>
+    <tr id="d1{{hotel.id}}" style="display:none">
+     <td valign="top">
+       <h1 style="text-align:left">Description:</h1>
+       <p style="text-align:left;font-size:18px">{{hotel.description}}</p>
+       <h1 style="text-align:left">Amneties:</h1>
+       <ul style="text-align:left">
+         {% for amenity in hotel.amenities %}
+         <li>{{amenity}}</li>
+         {% endfor %}
+       </ul>
+     </td>
+     <td td valign="top" colspan="2">
+       <div class="slideShow" style="max-width:1000px">
+         {% for img in hotel.images %}
+         <img class="mySlides{{hotel.id}}" src="{{img}}" style="width:500px;height:500px">
+         {% endfor %}
+       </div>
+       <br>
+       <div id="map{{hotel.id}}" style='width:300px;height:300px'></div></td>
+     </tr>
+    {% endfor %}
+   </tbody>
+ </table>
+</div>
+
+{% endblock %}
+{% load backpackers_extras %}
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    {% for hotel in hotels %}
+      $("#ba".concat({{hotel.id}})).click(function(){
+          $("#s1".concat({{hotel.id}})).fadeToggle(500);
+          $("#s2".concat({{hotel.id}})).fadeToggle(500);
+          $("#s3".concat({{hotel.id}})).fadeToggle(500);
+      });
+      $("#bb".concat({{hotel.id}})).click(function(){
+          $("#d1".concat({{hotel.id}})).fadeToggle(500);
+      });
+
+      var myIndex_{{hotel.id}} = 0;
+      carousel_{{hotel.id}}();
+
+      function carousel_{{hotel.id}}() {
+          var i;
+          var x = document.getElementsByClassName("mySlides{{hotel.id}}");
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+          }
+          myIndex_{{hotel.id}}++;
+          if (myIndex_{{hotel.id}} > x.length) {myIndex_{{hotel.id}} = 1}
+          x[myIndex_{{hotel.id}}-1].style.display = "block";
+          setTimeout(carousel_{{hotel.id}}, 2000); // Change image every 2 seconds
+      };
+      {% endfor %}
+    })
+</script>
+<script>
+  function init() {
+    {% for hotel in hotels %}
+    var mapProp{{hotel.id}}= {
+    center:new google.maps.LatLng({{hotel.latitude}},{{hotel.longitude}}),
+    zoom:15,
+    };
+    var map{{hotel.id}}=new google.maps.Map(document.getElementById("map{{hotel.id}}"),mapProp{{hotel.id}});
+    var marker{{hotel.id}} = new google.maps.Marker({
+          position: new google.maps.LatLng({{hotel.latitude}},{{hotel.longitude}}),
+          map: map{{hotel.id}}
+    });
+    $(document).ready(function() {
+      google.maps.event.addListener(map{{hotel.id}}, "idle", function(){
+        google.maps.event.trigger(map{{hotel.id}}, 'resize');
+      });
+    });
+    {% endfor %}
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCme293JqhncLM8Pt0IxdZbCNpC8Fel-Y4&callback=init"></script>
+{% endblock %}

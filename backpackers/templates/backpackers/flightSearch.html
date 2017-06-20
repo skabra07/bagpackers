@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+<!-- <link href="{% static 'css/cover.css' %}" rel="stylesheet"> -->
+<style type="text/css">
+    body{
+      background-image: url({% static 'img/bg.jpeg' %});
+      background-repeat:repeat-y;
+      background-size: 100% auto;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    }
+
+    a,
+    a:focus,
+    a:hover {
+      color: #fff;
+    }
+
+    .btn-default,
+    .btn-default:hover,
+    .btn-default:focus {
+      color: #333;
+      text-shadow: none;
+      background-color: #fff;
+      border: 1px solid #fff;
+    }
+
+    .cover-container {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .inner {
+      padding: 30px;
+    }
+
+    .masthead-brand {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .masthead-nav > li {
+      display: inline-block;
+    }
+    .masthead-nav > li + li {
+      margin-left: 20px;
+    }
+    .masthead-nav > li > a {
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff; /* IE8 proofing */
+      color: rgba(255,255,255,.75);
+      border-bottom: 2px solid transparent;
+    }
+    .masthead-nav > li > a:hover,
+    .masthead-nav > li > a:focus {
+      background-color: transparent;
+      border-bottom-color: #a9a9a9;
+      border-bottom-color: rgba(255,255,255,.25);
+    }
+    .masthead-nav > .active > a,
+    .masthead-nav > .active > a:hover,
+    .masthead-nav > .active > a:focus {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    @media (min-width: 768px) {
+      .masthead-brand {
+        float: left;
+      }
+      .masthead-nav {
+        float: right;
+      }
+    }
+
+    /*
+     * Affix and center
+     */
+
+    @media (min-width: 768px) {
+      /* Pull out the header and footer */
+      .masthead {
+        position: fixed;
+        top: 0;
+      }
+      .mastfoot {
+        position: fixed;
+        bottom: 0;
+      }
+      /* Start the vertical centering */
+      .site-wrapper-inner {
+        vertical-align: middle;
+      }
+      /* Handle the widths */
+      .masthead,
+      .mastfoot,
+      .cover-container {
+        width: 100%; /* Must be percentage or pixels for horizontal alignment */
+      }
+    }
+
+    @media (min-width: 992px) {
+      .masthead,
+      .mastfoot,
+      .cover-container {
+        width: 900px;
+      }
+    }
+
+
+  .wrapper {
+    margin: 50px auto;
+    padding: 40px;
+    max-width: 75%;
+
+  }
+  .tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-color:#aaa;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: table;
+    margin: 0 0 40px 0;
+  }
+  .tg td{
+    font-family:Arial, sans-serif;
+    display: table-cell;
+    font-size:16px;
+    padding:6px 12px;
+    border-style:solid;
+    border-width:0px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#666666;
+    color:#333;
+    background-color:#fff;
+    border-top-width:10px;
+    border-bottom-width:10px;
+  }
+  .tg th{
+    font-family:Arial, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:0px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aaa;
+    color:#fff;
+    background-color:#f38630;
+    border-top-width:1px;
+    border-bottom-width:1px;
+  }
+  .tg .tg-1swl{
+    font-weight:bold;
+    background-color:#ea6153;
+    color:#000;
+    vertical-align:middle;
+  }
+  .tg .tg-yw4l{
+    vertical-align:top;
+    text-align: left;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="cover-container" style="position:static;margin-bottom:-40px">
+        <div class="inner">
+            <h3 class="masthead-brand"><a href="/">BagPackers</a></h3>
+            <nav>
+                <ul class="nav masthead-nav">
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/flight">Flight</a></li>
+                    <li><a href="/hotel">Hotel</a></li>
+                </ul>
+            </nav>
+        </div>
+</div>
+<div class="wrapper">
+  <table class="tg">
+    <tr>
+      <th class="tg-1swl"><img src="{% static 'img/depature.png' %}" width=150px height=150px align="center"></th>
+      <th class="tg-1swl"><img src="{% static 'img/arrival.png' %}" width=150px height=150px align="center"></th>
+      <th class="tg-1swl" ><img src="{% static 'img/money.png' %}" width=100px height=100px></th>
+      <th class="tg-1swl" style="font-size:50px">Book</th>
+    </tr>
+    {% for flight in flights %}
+      <tr>
+        <!-- Outbound for loop -->
+        <td class="tg-yw4l">
+          {% for out in flight.outbound %}
+          <br><img src="{{out.flight_imageUrl}}"><br>Airline:{{out.flight_name}} ({{out.flight_number}})<br>From: {{out.from}} <br>To: {{out.to}}<br>Departure Date:{{out.depature_date}}<br>Departure Time:{{out.depature_time}}<br>Arrival Date:{{out.arrival_date}}<br>Arrival Time:{{out.arrival_time}}<br>Duration:{{out.duration}}<br>
+          {% endfor %}
+        </td>
+        <td class="tg-yw4l">
+         <!-- Inbound for loop -->
+         {% for arrive in flight.inbound %}
+         <br><img src="{{arrive.flight_imageUrl}}"><br>Airline:{{arrive.flight_name}} ({{arrive.flight_number}})<br>From: {{arrive.from}} <br>To: {{arrive.to}}<br>Departure Date :{{arrive.depature_date}}<br>Departure Time:{{arrive.depature_time}}<br>Arrival Date:{{arrive.arrival_date}}<br>Arrival Time:{{arrive.arrival_time}}<br>Duration:{{arrive.duration}}<br>
+         {% endfor %}
+        </td>
+        <td class="tg-yw4l" style="vertical-align: middle;text-align:center">{{flight.prices.0.cost}}</td>
+        <td class="tg-yw4l" style="vertical-align: middle;text-align:center"><a style="color: rgb(0,0,0)" href="{{flight.prices.0.booking_url}}" rel="nofollow">Book</a> or <a style="color: rgb(0,0,0)" href="#" onclick="return false;" id="b{{flight.id}}">more options</a></td>
+      </tr>
+      <tr id="s1{{flight.id}}" style="display:none;" >
+       <th class="tg-1swl" style="background-color:#2980b9;text-align:right"></th>
+       <th class="tg-1swl" style="background-color:#2980b9"></th>
+       <th class="tg-1swl" style="background-color:#2980b9;text-align:left"></th>
+       <th class="tg-1swl" style="background-color:#2980b9;text-align:left"></th>
+      </tr>
+      <tr id="s2{{flight.id}}" style="display:none">
+       <td>
+         {% for price in flight.prices %}
+           {% if forloop.last %}
+            <img src="{{price.agent_imgUrl}}" align="right" width="120px" height="60px">
+           {% else %}
+            <img src="{{price.agent_imgUrl}}" align="right" width="120px" height="60px"><br><br><br><br>
+           {% endif %}
+         {% endfor %}
+       </td>
+       <td style="vertical-align: middle;font-size:22px;">
+         {% for price in flight.prices %}
+           {% if forloop.last %}
+            {{price.agent_name}}
+           {% else %}
+            {{price.agent_name}}<br><br><br>
+           {% endif %}
+         {% endfor %}
+       </td>
+       <td style="vertical-align: middle;font-size:20px">
+         {% for price in flight.prices %}
+           {% if forloop.last %}
+            {{price.cost}}
+           {% else %}
+            {{price.cost}}<br><br><br>
+           {% endif %}
+         {% endfor %}
+       </td>
+       <td style="vertical-align: middle;text-align:left;font-size:20px">
+         {% for price in flight.prices %}
+           {% if forloop.last %}
+            <a href="{{price.booking_url}}" rel="nofollow" style="color: rgb(0,0,0)">Book</a>
+           {% else %}
+            <a href="{{price.booking_url}}" rel="nofollow" style="color: rgb(0,0,0)">Book</a><br><br><br>
+           {% endif %}
+         {% endfor %}
+       </td>
+      </tr>
+      <tr id="s3{{flight.id}}" style="display:none;">
+        <th class="tg-1swl" style="background-color:#2980b9;"></th>
+        <th class="tg-1swl" style="background-color:#2980b9"></th>
+        <th class="tg-1swl" style="background-color:#2980b9;"></th>
+        <th class="tg-1swl" style="background-color:#2980b9;"></th>
+        </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    {% for flight in flights %}
+      $("#b".concat({{flight.id}})).click(function(){
+          $("#s1".concat({{flight.id}})).fadeToggle(500);
+          $("#s2".concat({{flight.id}})).fadeToggle(500);
+          $("#s3".concat({{flight.id}})).fadeToggle(500);
+      });
+    {% endfor %}
+  });
+</script>
+{% endblock %}

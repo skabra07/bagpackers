@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% load static %}
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">BagPackers</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/flight">Flight</a></li>
+                            <li class="active"><a href="/hotel">Hotel</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Adventure just got easier</h1>
+                <p class="lead">Focus on your trip, we organize your stays.</p>
+            </div>
+            <img src="{% static 'img/loader.gif' %}" id="loading" style="display: block; margin: 0 auto; width: 100px; display: none;">
+            <form action="{% url 'hotelSearch' %}" method="get" id="hotel_form" onstop="stopLoading()">
+                <div class="row">
+                    <div class="form-group col-md-offset-3 col-md-6">
+                        <label class="control-label" for="location">Location</label>
+                        <input type="text" name="location" id="location" class="form-control" placeholder="Choose your departure">
+                    </div>
+                    <div class="form-group col-md-offset-2 col-md-4">
+                        <label class="control-label" for="checkindate">Check-in</label>
+                        <input type="text" name="checkindate" id="checkindate" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="checkoutdate">Check-out</label>
+                        <input type="text" name="checkoutdate" id="checkoutdate" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="guests">Number of Guests</label>
+                        <input type="text" name="guests" id="guests" class="form-control" placeholder="Guests">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="rooms">Number of Rooms</label>
+                        <input type="text" name="rooms" id="rooms" class="form-control" placeholder="Rooms">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="currency">Currency</label>
+                        <select class="form-control" name="currency" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" id="search" class="btn btn-lg btn-success">Search</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+    $('#hotel_form').submit(function() {
+        $('#loading').css('display', 'block');
+        $('#hotel_form').css('display', 'none');
+    });
+    $(document).ready(function() {
+      var dateDep = $("#checkindate").val()
+      $("#checkoutdate").datepicker({ dateFormat: 'yy-mm-dd',defaultDate: new Date(),
+            onSelect: function(dateStr) {
+            toDate = new Date(dateStr);
+            }});
+    });
+    $(document).ready(function() {
+      $("#checkindate").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date(),
+            minDate: new Date(),
+            onSelect: function(dateStr)
+            {
+                $("#checkoutdate").datepicker("option",{ minDate: new Date(dateStr)})
+            }});
+    });
+</script>
+{% endblock %}

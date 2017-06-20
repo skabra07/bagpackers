@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% load static %}
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">BagPackers</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li><a href="/">Home</a></li>
+                            <li class="active"><a href="/flight">Flight</a></li>
+                            <li><a href="/hotel">Hotel</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Adventure just got easier</h1>
+                <p class="lead">Focus on your trip, we organize your stays.</p>
+            </div>
+            <img src="{% static 'img/loader.gif' %}" id="loading" style="display: block; margin: 0 auto; width: 100px; display: none;">
+            <form action="{% url 'flightSearch' %}" method="get" id="flight_form">
+                <div class="row">
+                    <div class="form-group col-md-offset-2 col-md-4">
+                        <label class="control-label" for="origin">Departure</label>
+                        <input type="text" name="origin" id="origin" class="form-control" placeholder="Choose your departure">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="destination">Destination</label>
+                        <input type="text" name="destination" id="destination" class="form-control" placeholder="Choose your destination">
+                    </div>
+                    <div class="form-group col-md-offset-2 col-md-4">
+                        <label class="control-label" for="dateDepature">Departure date</label>
+                        <input type="text" name="dateDepature" id="dateDepature" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label" for="dateArrival">Arrival date</label>
+                        <input type="text" name="dateArrival" id="dateArrival" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group col-md-offset-4 col-md-4">
+                        <label class="control-label" for="currency">Currency</label>
+                        <select class="form-control" name="currency" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" id="search" class="btn btn-lg btn-success">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+    $('#flight_form').submit(function() {
+        $('#loading').css('display', 'block');
+        $('#flight_form').css('display', 'none');
+    });
+    $(document).ready(function() {
+      var dateDep = $("#dateDepature").val()
+      $("#dateArrival").datepicker({ dateFormat: 'yy-mm-dd',defaultDate: new Date(),
+            onSelect: function(dateStr) {
+            toDate = new Date(dateStr);
+            }});
+    });
+    $(document).ready(function() {
+      $("#dateDepature").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date(),
+            minDate: new Date(),
+            onSelect: function(dateStr)
+            {
+                $("#dateArrival").datepicker("option",{ minDate: new Date(dateStr)})
+            }});
+    });
+</script>
+{% endblock %}
